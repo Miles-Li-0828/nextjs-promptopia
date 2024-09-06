@@ -33,6 +33,7 @@ const handler = NextAuth({
         async signIn({ profile }) {
             try {
                 await connectToDB();
+                const generatedUsername = profile.name.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
                 const userExists = await User.findOne({
                     email: profile.email
                 });
@@ -40,7 +41,7 @@ const handler = NextAuth({
                 if (!userExists) {
                     await User.create({
                         email: profile.email,
-                        username: profile.name.replace(" ", "").toLowerCase(),
+                        username: generatedUsername,
                         image: profile.picture
                     });
                 }
