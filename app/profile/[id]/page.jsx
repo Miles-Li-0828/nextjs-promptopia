@@ -32,11 +32,13 @@ const UserProfileContent = ({ params }) => {
     }, [params.id])
 
     return (
-        <Profile
-            name={userName}
-            desc={`Welcome to ${userName}'s profile page. Check out their latest prompts and get inspired by their creativity`}
-            data={posts}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+            <Profile
+                name={userName}
+                desc={`Welcome to ${userName}'s profile page. Check out their latest prompts and get inspired by their creativity`}
+                data={posts}
+            />
+        </Suspense>
     )
 }
 
