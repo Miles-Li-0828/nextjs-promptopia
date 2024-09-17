@@ -8,6 +8,17 @@ import Form from "@components/Form";
 
 const UpdatePrompt = () => {
     const router = useRouter();
+
+    // 将 useSearchParams 放到 Suspense 中
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <UpdatePromptContent />
+        </Suspense>
+    );
+};
+
+const UpdatePromptContent = () => {
+    const router = useRouter();
     const searchParams = useSearchParams();
     const promptId = searchParams.get("id");
 
