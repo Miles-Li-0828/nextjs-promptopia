@@ -39,7 +39,7 @@ const MyProfile = () => {
                 });
 
                 const filteredPosts = myPosts.filter((item) => item._id !== post._id);
-
+                fetchPosts();
                 setMyPosts(filteredPosts);
             } catch (error) {
                 console.log(error);
