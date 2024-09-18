@@ -1,22 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import Form from "@components/Form";
-
-// 在 Feed.jsx 中
-useEffect(() => {
-    const fetchPosts = async () => {
-        const response = await fetch("/api/prompt");
-        const data = await response.json();
-        setPosts(data);
-    };
-
-    fetchPosts(); // 每次组件加载时调用
-}, []);
-
 
 const CreatePrompt = () => {
     const router = useRouter();
@@ -40,8 +28,7 @@ const CreatePrompt = () => {
             });
 
             if (response.ok) {
-                fetchPosts(); // 假设 fetchPosts 是用来获取主页 Feed 数据的函数
-                router.push("/", undefined, { scroll: true });
+                router.push("/");
             }
         } catch (error) {
             console.log(error);
