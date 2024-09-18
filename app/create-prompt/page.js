@@ -41,7 +41,7 @@ const CreatePrompt = () => {
 
             if (response.ok) {
                 fetchPosts(); // 假设 fetchPosts 是用来获取主页 Feed 数据的函数
-                router.push("/");
+                router.push("/", undefined, { scroll: true });
             }
         } catch (error) {
             console.log(error);
